@@ -1,0 +1,149 @@
+plugins {
+	id "application";
+	id "jacoco";
+}
+
+application {
+	def applicationMainClass = "web.Server";
+	mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : applicationMainClass;
+}
+
+repositories {
+	mavenCentral();
+}
+
+dependencies {
+	def junitVer = "5.8.2";
+	testImplementation group: "org.junit.jupiter", name: "junit-jupiter-api", version: junitVer;
+	testRuntimeOnly group: "org.junit.jupiter", name: "junit-jupiter-engine", version: junitVer;
+
+	testImplementation group: "org.hamcrest", name: "hamcrest", version: "2.2";
+	testImplementation group: "org.mockito", name: "mockito-core", version: "4.6.1";
+
+	implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0'
+	implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.0'
+
+	implementation group: 'com.google.guava', name: 'guava', version: '31.1-jre'
+
+	def joobyVer = '2.16.1'
+	implementation group: 'io.jooby', name: 'jooby-netty', version: joobyVer;
+	implementation group: 'io.jooby', name: 'jooby-gson', version: joobyVer;
+
+	implementation group: 'net.sf.oval', name: 'oval', version: '3.2.1'
+
+	implementation group: 'com.h2database', name: 'h2', version: '2.1.214'
+	implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
+
+	def jdbiVer = '3.32.0'
+	implementation group: 'org.jdbi', name: 'jdbi3-core', version: jdbiVer
+	implementation group: 'org.jdbi', name: 'jdbi3-sqlobject', version: jdbiVer
+}
+
+test {
+	useJUnitPlatform();
+
+	// only run tests if we explicitly run the 'tests' task
+	onlyIf { project.gradle.startParameter.taskNames.contains("test") }
+}
+
+sourceSets {
+    'static' {
+		resources {
+			srcDirs = ['static']
+		}
+		java{
+			srcDirs = []
+		}
+	}
+}
+
+/* convenience tasks for working with a project */
+
+tasks.register("createMissingSourceDirs") {
+	group = "Project";
+	description = "Create all of the missing source directories for this project.";
+	doFirst {
+		sourceSets.each { def sourceRoot ->
+			sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+				if(!sourceDir.dir.exists()) {
+					println "Creating ${sourceDir}";
+					mkdir sourceDir.dir;
+				}
+			}
+		}
+	}
+}
+
+tasks.register("deleteEmptySourceDirs") {
+	group = "Project";
+	description = "Delete empty source directories.";
+	doFirst {
+		sourceSets.each { def sourceRoot ->
+			sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+				if(sourceDir.dir.exists() && sourceDir.dir.isDirectory() && sourceDir.dir.list().length == 0) {
+					println "Removing empty ${sourceDir}";
+					sourceDir.dir.delete();
+				}
+			}
+		}
+	}
+}
+
+tasks.register("openProjectDir") {
+	group = "Project";
+	description = "Open the project directory in the system file manager.";
+	doFirst {
+		println("Opening: " + file(projectDir));
+		java.awt.Desktop.getDesktop().open(file(projectDir));
+	}
+}
+
+tasks.register("openBuildDir") {
+	group = "Project";
+	description = "Open the project build directory in the system file manager.";
+	doFirst {
+		println("Opening: " + file(buildDir));
+		java.awt.Desktop.getDesktop().open(file(buildDir));
+	}
+}
+
+tasks.register("createGitIgnore") {
+	group = "Project";
+	description = "Create the project's .gitignore file.";
+
+	def gitIgnored="""
+		.gradle/
+		.nb-gradle/
+		.settings/
+		nbproject/
+		build/
+		bin/
+		dist/
+		tmp/
+		.classpath
+		.project
+		*.zip
+		*.tgz
+		*.tar.gz
+		*.class
+		*.jar
+		.DS_Store
+		!gradle-wrapper.jar
+		""";
+
+	doLast {
+		def file = new File(projectDir, ".gitignore");
+		if ( !file.exists() ) {
+			println("Creating .gitignore");
+
+			gitIgnored.lines().each { f ->
+				if(!f.trim().isBlank()) {
+					file.append(f.trim()+"\n");
+				}
+			}
+
+		} else {
+			println(".gitignore already exists");
+		}
+	}
+}
