@@ -19,6 +19,7 @@ dependencies {
 
 	testImplementation group: "org.hamcrest", name: "hamcrest", version: "2.2";
 	testImplementation group: "org.mockito", name: "mockito-core", version: "4.6.1";
+	testImplementation group: "org.assertj", name: "assertj-swing", version: "3.17.1";
 
 	implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0'
 	implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.0'
