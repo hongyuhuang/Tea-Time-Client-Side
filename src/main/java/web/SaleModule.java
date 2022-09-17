@@ -4,6 +4,7 @@
  */
 package web;
 
+import domain.Sale;
 import io.jooby.Jooby;
 
 /**
