@@ -1,32 +1,24 @@
-<%-- 
-    Document   : sign-in
-    Created on : 20/08/2022, 3:12:33 pm
-    Author     : hongyuhuang
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tea Time | Sign In</title>
         <link rel="stylesheet" href="css/style.css"/>
+        
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
 
     </head>
     <body>
         <main>
-            <%@include file="WEB-INF/jspf/navigation.jspf"%>
+            <navmenu></navmenu>
+
 
             <h1>Sign In</h1>
 
             <p>Please sign in to continue.</p>
-
-            <%
-                String validation = (String) session.getAttribute("sign-in-validation");
-                validation = validation != null ? validation : "";
-            %>
-
-            <p><%= validation%></p>
 
             <fieldset>
 
@@ -42,9 +34,9 @@
 
             </fieldset>
 
-            <p>If you don't have an account then you can <a href="create-account.jsp">create one</a>.</p>
-
+            <p>If you don't have an account then you can <a href="create-account.html">create one</a>.</p>
 
         </main>
+        <script type="module" src="js/sign-in.js"></script>
     </body>
 </html>

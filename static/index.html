@@ -1,19 +1,25 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tea Time | Home</title>
         <link rel="stylesheet" href="css/style.css"/>
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
     </head>
     <body>
         <main>
-            <%@include file="WEB-INF/jspf/navigation.jspf"%>
+            <navmenu></navmenu>
+
 
             <h1>Welcome to the Tea Time Shop</h1>
-            
+
             <img src="tea.jpeg" alt="Picture of tea in glass mug with a mint on the side."/>
-            
+
         </main>
+        <script type="module" src="js/index.js"></script>
     </body>
 </html>

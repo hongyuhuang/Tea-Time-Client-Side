@@ -1,32 +1,24 @@
-<%-- 
-    Document   : create-account
-    Created on : 20/08/2022, 3:12:45 pm
-    Author     : hongyuhuang
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Tea Time | Create Account</title>
         <link rel="stylesheet" href="css/style.css"/>
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
     </head>
     <body>
         <main>
-            <%@include file="WEB-INF/jspf/navigation.jspf"%>
+            <navmenu></navmenu>
+
 
             <h1>Create an Account</h1>
             <fieldset>
 
                 <legend>Account Details</legend>
-
-                <%
-                    String validation = (String) session.getAttribute("create-account-validation");
-                    validation = validation != null ? validation : "";
-                %>
-
-                <p><%= validation%></p>
 
                 <form action="create-account" method="POST">
 
@@ -42,5 +34,6 @@
 
             </fieldset>
         </main>
+        <script type="module" src="js/create-account.js"></script>
     </body>
 </html>

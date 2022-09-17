@@ -4,8 +4,10 @@
  */
 package web;
 
+import domain.Customer;
 import domain.Sale;
 import io.jooby.Jooby;
+import io.jooby.StatusCode;
 
 /**
  *
@@ -13,9 +15,9 @@ import io.jooby.Jooby;
  */
 public class SaleModule extends Jooby {
 
-    public SaleModule(Sale sale) {
+    public SaleModule() {
           get("/api/sales", ctx -> {
-            return null;
+            return ctx.send(StatusCode.CREATED);
         });
     }
 }
