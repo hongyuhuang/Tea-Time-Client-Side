@@ -16,6 +16,17 @@ const app = Vue.createApp({
 
     methods: {
         // comma separated function declarations
+           addCustomer() {
+            const customer = {id: this.id, username: this.username, firstName: this.firstName, surname: this.surname, emailAddress: this.emailAddress, shippingAddress: this.shippingAddress,password: this.password};
+
+            axios.post(customersApi, customer)
+                    .then(() => {
+                        window.location = 'sign-in.html';
+                    })
+                    .catch(error => {
+                        alert(error.response.data.message);
+                    });
+        }       
 
     },
 

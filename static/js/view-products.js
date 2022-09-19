@@ -1,22 +1,60 @@
+var productsApi = '/api/products/';
+var categoriesApi = '/api/categories/';
+var categoriesFilterApi = ({category}) => `/api/categories/${category}`;
+
+
 const app = Vue.createApp({
 
     data() {
         return {
             // models map (comma separated key/value pairs)
-
+            products : new Array(),
+            categories : new Array()
         };
     },
 
     mounted() {
         // semicolon separated statements
-
-        // alert('Mounted method called');
+        this.getProducts();
+        this.getCategories();
 
     },
 
     methods: {
         // comma separated function declarations
+        getProducts() {
+            axios.get(productsApi)
+                    .then(response => {
+                        this.products = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
 
+        },
+         getCategories() {
+            axios.get(categoriesApi)
+                    .then(response => {
+                        this.categories = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+
+        },
+          // click handler for the major filter buttons
+        filterByCategory(category) {
+            axios.get(categoriesFilterApi({'category': category}))
+                    .then(response => {
+                        this.products = response.data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred - check the console for details.");
+                    });
+        }
     },
 
     // other modules

@@ -4,7 +4,7 @@ export const navigationMenu = {
             <nav>
                 <a href="index.html">Home</a>
                 <a href="sign-in.html">Sign In</a>
-                <a href="view-products.html">View Cart</a>
+                <a href="view-products.html">View Products</a>
                 <a href="index.html">Sign Out</a>
             </nav>
             `

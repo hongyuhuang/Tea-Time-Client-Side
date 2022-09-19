@@ -21,7 +21,7 @@ public class CustomerModule extends Jooby {
             dao.save(customer);
             return ctx.send(StatusCode.CREATED);
         });
-
+        
         get("/api/customers/{username}", ctx -> {
             String username = ctx.path("username").value();
             Customer customer = dao.getByUsername(username);

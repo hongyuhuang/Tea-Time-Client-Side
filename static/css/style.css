@@ -65,6 +65,7 @@ h1 {
     text-align: center;
     padding: 20px;
     margin-top: 0px;
+    margin-bottom: 0px;
     background: var(--primary);
     color: white;
 }
@@ -131,5 +132,10 @@ legend {
 
 .category {
     width: auto;
+    margin-right: 10px;
+}
+
+.categories {
+    margin-top: 10px;
 }
 

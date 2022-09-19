@@ -17,28 +17,33 @@
 
             <h1>Products</h1>
 
-            <a href="view-products.html"><button class = "category">All</button></a>
-        
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Available</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div class="categories">
+                <button class="category" @click.prevent="getProducts()">All</button>
+                <button class="category" @click.prevent="filterByCategory(category)"
+                        v-for="category in categories">{{category}}</button>
+            </div>
 
+
+            <table>
+                <thead>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr v-for="product in products">
+                        <td>{{product.name}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.listPrice}}</td>
+                        <td>{{product.quantityInStock}}</td>
                         <td><button>Buy</button></td>
                     </tr>
-                    </main>
-                <script type="module" src="js/view-products.js"></script>
-
-                    </body>
-                    </html>
+            </table>
+        </main>
+        <script type="module" src="js/view-products.js"></script>
+    </body>
+</html>

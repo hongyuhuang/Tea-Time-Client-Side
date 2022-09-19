@@ -19,9 +19,9 @@ public class ProductModule extends Jooby {
     public ProductModule(ProductCollectionsDAO dao) {
         get("/api/products/", ctx -> dao.getProducts());
 
-        get("api/products/{id}", ctx -> {
-            String id = ctx.path("id").value();
-            Product product = dao.searchById(id);
+        get("/api/products/{id}", ctx -> {
+            String productID = ctx.path("id").value();
+            Product product = dao.searchById(productID);
             
             if (product == null) {
                 // no product with that ID found, so return a 404/Not Found error
