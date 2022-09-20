@@ -8,8 +8,8 @@ const app = Vue.createApp({
     data() {
         return {
             // models map (comma separated key/value pairs)
-            products : new Array(),
-            categories : new Array()
+            products: new Array(),
+            categories: new Array()
         };
     },
 
@@ -33,7 +33,7 @@ const app = Vue.createApp({
                     });
 
         },
-         getCategories() {
+        getCategories() {
             axios.get(categoriesApi)
                     .then(response => {
                         this.categories = response.data;
@@ -44,7 +44,7 @@ const app = Vue.createApp({
                     });
 
         },
-          // click handler for the major filter buttons
+        // click handler for the major filter buttons
         filterByCategory(category) {
             axios.get(categoriesFilterApi({'category': category}))
                     .then(response => {
@@ -54,6 +54,11 @@ const app = Vue.createApp({
                         console.error(error);
                         alert("An error occurred - check the console for details.");
                     });
+        },
+
+        buyProduct(product) {
+            dataStore.commit("selectProduct", product);
+            window.location = "quantity.html";
         }
     },
 
@@ -68,6 +73,10 @@ import { navigationMenu } from './navigation-menu.js';
 
 // register the navigation menu under the <navmenu> tag
 app.component('navmenu', navigationMenu);
+
+// import data store
+import { dataStore } from './data-store.js';
+app.use(dataStore);
 
 
 // mount the page - this needs to be the last line in the file

@@ -1,34 +1,23 @@
-var customer = ({username}) => `/api/customers/${username}`;
-
 const app = Vue.createApp({
 
     data() {
         return {
             // models map (comma separated key/value pairs)
-            customer: new Object()
+
         };
     },
-
+      computed: Vuex.mapState({
+        product: 'selectedProduct'
+    }),
     mounted() {
         // semicolon separated statements
 
-        // alert('Mounted method called');
 
     },
 
     methods: {
         // comma separated function declarations
-        signIn(){
-            axios.get(customer({'username': this.username}))
-                    .then(response => {
-                        this.customer = response.data;
-                        dataStore.commit("signIn", this.customer);
-                        window.location = 'index.html';
-                    })
-                    .catch(error => {
-                        alert(error.response.data.message);
-                    });
-        }
+
     },
 
     // other modules

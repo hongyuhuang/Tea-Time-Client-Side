@@ -1,22 +1,22 @@
+var customersApi = "/api/register/";
+
 const app = Vue.createApp({
 
     data() {
         return {
             // models map (comma separated key/value pairs)
-
+            customers : new Array()
         };
     },
 
     mounted() {
         // semicolon separated statements
 
-        // alert('Mounted method called');
-
     },
 
     methods: {
         // comma separated function declarations
-           addCustomer() {
+           createAccount() {
             const customer = {id: this.id, username: this.username, firstName: this.firstName, surname: this.surname, emailAddress: this.emailAddress, shippingAddress: this.shippingAddress,password: this.password};
 
             axios.post(customersApi, customer)
@@ -26,8 +26,7 @@ const app = Vue.createApp({
                     .catch(error => {
                         alert(error.response.data.message);
                     });
-        }       
-
+        }
     },
 
     // other modules
@@ -41,6 +40,10 @@ import { navigationMenu } from './navigation-menu.js';
 
 // register the navigation menu under the <navmenu> tag
 app.component('navmenu', navigationMenu);
+
+// import data store
+import { dataStore } from './data-store.js';
+app.use(dataStore);
 
 
 // mount the page - this needs to be the last line in the file

@@ -16,23 +16,27 @@
 
 
             <h1>Create an Account</h1>
-            <fieldset>
 
-                <legend>Account Details</legend>
+            <div class="content">
+                <p>Please provide your details below.</p>
+                <fieldset>
 
-                <form action="create-account" method="POST">
+                    <legend>Account Details</legend>
 
-                    <label>Username:</label><input type="text" name="username"/>
-                    <label>First Name</label><input type="text" name="firstName"/>
-                    <label>Last Name</label><input type="text" name="surname">
-                    <label>Email:</label><input type="email" name="emailAddress"/>
-                    <label>Address:</label><textarea name="shippingAddress"></textarea>
-                    <label>Password:</label><input type="password" name="password"/>
+                    <form @submit.prevent="createAccount()"/>
+
+                    <label>Username:</label><input type="text" v-model="username"/>
+                    <label>First Name</label><input type="text" v-model="firstName"/>
+                    <label>Last Name</label><input type="text" v-model="surname">
+                    <label>Email:</label><input type="email" v-model="emailAddress"/>
+                    <label>Address:</label><textarea v-model="shippingAddress"></textarea>
+                    <label>Password:</label><input type="password" v-model="password"/>
 
                     <button type="submit">Create Account</button>
-                </form>
+                    </form>
 
-            </fieldset>
+                </fieldset>
+            </div>
         </main>
         <script type="module" src="js/create-account.js"></script>
     </body>

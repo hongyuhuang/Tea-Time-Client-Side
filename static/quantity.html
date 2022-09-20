@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Tea Time | Quantity</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css"/>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <script src="js/plusminus.js"></script>
+    </head>
+    <body>
+        <main>
+            <navmenu></navmenu>
+            <h1>{{product.name}}</h1>
+            <div class="content">
+                <div class="image">
+                    <img src="placeholder.jpeg" alt="Placeholder Image"/>
+                </div> 
+                <div class="text">
+                    <h3>Category</h2>
+                        <p>{{product.category}}</p>
+                    <h3>Description</h2>
+                        <p>{{product.description}}</p>
+                    <p><b>Price</b> ${{product.listPrice}}</p>
+                    <p><b>Available</b> {{product.quantityInStock}}</p>
+                    
+                    <button id="minus">−</button>
+                    <input type="number" value="0" id="input"/>
+                    <button id="plus">+</button>
+                    
+                    <button type="submit">Add to cart</button>
+                </div>
+            </div>    
+        </main>
+        <script type="module" src="js/quantity.js"></script> 
+    </body>
+</html>

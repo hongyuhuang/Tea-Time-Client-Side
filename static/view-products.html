@@ -17,32 +17,31 @@
 
             <h1>Products</h1>
 
-            <div class="categories">
-                <button class="category" @click.prevent="getProducts()">All</button>
-                <button class="category" @click.prevent="filterByCategory(category)"
-                        v-for="category in categories">{{category}}</button>
+            <div class="content">
+                <div class="categories">
+                    <button class="category" @click.prevent="getProducts()">All</button>
+                    <button class="category" @click.prevent="filterByCategory(category)"
+                            v-for="category in categories">{{category}}</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Available</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="product in products">
+                            <td>{{product.name}}</td>
+                            <td>{{product.description}}</td>
+                            <td>{{product.listPrice}}</td>
+                            <td>{{product.quantityInStock}}</td>
+                            <td><button @click.prevent="buyProduct(product)">Buy</button></td>
+                        </tr>
+                </table>
             </div>
-
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Available</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr v-for="product in products">
-                        <td>{{product.name}}</td>
-                        <td>{{product.description}}</td>
-                        <td>{{product.listPrice}}</td>
-                        <td>{{product.quantityInStock}}</td>
-                        <td><button>Buy</button></td>
-                    </tr>
-            </table>
         </main>
         <script type="module" src="js/view-products.js"></script>
     </body>
