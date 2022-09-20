@@ -18,6 +18,7 @@
                 <div class="image">
                     <img src="placeholder.jpeg" alt="Placeholder Image"/>
                 </div> 
+                
                 <div class="text">
                     <h3>Category</h2>
                         <p>{{product.category}}</p>
@@ -26,9 +27,11 @@
                     <p><b>Price</b> ${{product.listPrice}}</p>
                     <p><b>Available</b> {{product.quantityInStock}}</p>
                     
-                    <button id="minus">−</button>
-                    <input type="number" value="0" id="input"/>
-                    <button id="plus">+</button>
+                    <div class="plus-minus">
+                        <button id="minus">−</button>
+                        <input type="number" value="0" id="input"/>
+                        <button id="plus">+</button>
+                    </div>
                     
                     <button type="submit">Add to cart</button>
                 </div>
