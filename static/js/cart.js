@@ -63,8 +63,9 @@ const app = Vue.createApp({
             }
         },
         isEmpty: function(evt) {
-             if (evt.target.value === '') {
+             if (evt.target.value === '' || evt.target.value === '0') {
                 evt.target.value = 1;
+                this.quantity = 1;
             }
         }
     }
