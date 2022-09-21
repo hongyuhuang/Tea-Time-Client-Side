@@ -8,7 +8,7 @@
         <script src="js/external/vuex.global.js"></script>
         <script src="js/external/vuex-persistedstate.js"></script>
         <script src="js/external/axios.js"></script>
-        <script src="js/plusminus.js"></script>
+        <!--<script src="js/plusminus.js"></script>-->
     </head>
     <body>
         <main>
@@ -16,7 +16,7 @@
             <h1>{{product.name}}</h1>
             <div class="content">
                 <div class="image">
-                    <img src="placeholder.jpeg" alt="Placeholder Image"/>
+                    <img src="images/placeholder.jpeg" alt="Placeholder Image"/>
                 </div> 
                 
                 <div class="text">
@@ -27,16 +27,20 @@
                     <p><b>Price</b> ${{product.listPrice}}</p>
                     <p><b>Available</b> {{product.quantityInStock}}</p>
                     
-                    <div class="plus-minus">
-                        <button id="minus">−</button>
-                        <input type="number" value="0" id="input"/>
-                        <button id="plus">+</button>
+                    <div class="button-label">
+                        <h3>Quantity</h3>
                     </div>
                     
-                    <button type="submit">Add to cart</button>
+                    <div class="plus-minus">
+                        <button id="minus" @click.prevent="decrement()" >−</button>
+                        <input type="number" id="input" v-model.number="quantity" @keypress="isNumber($event)" @change="isEmpty($event)"/>
+                        <button id="plus" @click.prevent="increment()">+</button>
+                    </div>
+                    
+                    <button class="add-to-cart" @click.prevent="addProductToCart()">Add to cart</button>
                 </div>
             </div>    
         </main>
-        <script type="module" src="js/quantity.js"></script> 
+        <script type="module" src="js/cart.js"></script> 
     </body>
 </html>
