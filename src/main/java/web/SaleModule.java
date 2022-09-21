@@ -15,8 +15,10 @@ import io.jooby.StatusCode;
  */
 public class SaleModule extends Jooby {
 
-    public SaleModule() {
-          get("/api/sales", ctx -> {
+    public SaleModule(SaleDAO dao) {
+        post("/api/sales", ctx -> {
+            Sale sale = ctx.body().to(Sale.class);
+            dao.save(sale);
             return ctx.send(StatusCode.CREATED);
         });
     }

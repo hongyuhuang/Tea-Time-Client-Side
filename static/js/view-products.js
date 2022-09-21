@@ -62,7 +62,7 @@ const app = Vue.createApp({
     },
 
     // other modules
-    mixins: []
+    mixins: [NumberFormatter]
 
 });
 
@@ -77,6 +77,8 @@ app.component('navmenu', navigationMenu);
 import { dataStore } from './data-store.js';
 app.use(dataStore);
 
+//import number formatter
+import { NumberFormatter } from './number-formatter.js';
 
 // mount the page - this needs to be the last line in the file
 app.mount("main");

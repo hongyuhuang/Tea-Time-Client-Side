@@ -30,14 +30,15 @@
                             <th>Description</th>
                             <th>Price</th>
                             <th>Available</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="product in products">
+                        <tr v-for="product in products" style="height: 100px;">
                             <td>{{product.name}}</td>
                             <td>{{product.description}}</td>
-                            <td>{{product.listPrice}}</td>
-                            <td>{{product.quantityInStock}}</td>
+                            <td>{{formatCurrency(product.listPrice)}}</td>
+                            <td>{{formatNumber(product.quantityInStock)}}</td>
                             <td><button @click.prevent="buyProduct(product)">Buy</button></td>
                         </tr>
                 </table>

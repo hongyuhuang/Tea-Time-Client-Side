@@ -14,7 +14,38 @@
             <navmenu></navmenu>
 
             <h1>Shopping Cart</h1>
-
+            <div class="content">
+                <table id="cartTable">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="text-align: left;">Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in items">                        
+                            <td><img class="cart" src="images/placeholder.jpeg " alt="Placeholder image"></td>
+                            <td>{{item.product.name}}</td>
+                            <td style="text-align: center;">{{formatCurrency(item.salePrice)}}</td>
+                            <td style="text-align: center;">{{item.quantityPurchased}}</td>
+                            <td style="text-align: center;">{{formatCurrency(getItemTotal(item))}}</td>
+                        </tr>
+                        <tr style="height: 45px;">                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: center; font-weight: bold;">Total</td>
+                            <td style="text-align: center;">{{formatCurrency(getTotal())}}</td>                      
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="checkoutButton">
+                    <button @click.prevent="checkOut()">Checkout</button>
+                </div>
+            </div>
         </main>
     </body>
     <script type="module" src="js/cart.js"></script>

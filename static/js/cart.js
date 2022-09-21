@@ -17,6 +17,9 @@ class Sale {
     }
 }
 
+var salesApi = '/api/sales';
+var total = 0;
+
 const app = Vue.createApp({
 
     data() {
@@ -45,6 +48,7 @@ const app = Vue.createApp({
             window.location = "view-products.html";
         },
         increment() {
+            if (this.quantity < this.product.quantityInStock)
             this.quantity++;
         },
         decrement() {
@@ -63,12 +67,36 @@ const app = Vue.createApp({
             }
         },
         isEmpty: function(evt) {
-             if (evt.target.value === '' || evt.target.value === '0') {
-                evt.target.value = 1;
+            if (evt.target.value === '' || evt.target.value === '0') {
                 this.quantity = 1;
             }
+            if (evt.target.value > this.product.quantityInStock) {
+                this.quantity = this.product.quantityInStock;
+            }
+        },
+        checkOut() {
+            let sale = new Sale(this.customer, this.items);
+            axios.post(salesApi, sale)
+                    .then(() => {
+                        dataStore.commit("clearItems");
+                        window.location = 'check-out.html';
+                    })
+                    .catch(error => {
+                        alert(error.response.data.message);
+                    });
+        },
+        getItemTotal(item) {
+            var itemTotal = item.salePrice * item.quantityPurchased;
+            total += itemTotal;
+            return itemTotal;
+        },
+        getTotal() {
+            return total;
         }
-    }
+    },
+    
+    // other modules
+    mixins: [NumberFormatter]
 });
 
 /* other component imports go here */
@@ -81,6 +109,9 @@ app.component('navmenu', navigationMenu);
 // import data store
 import { dataStore } from './data-store.js';
 app.use(dataStore);
+
+//import number formatter
+import { NumberFormatter } from './number-formatter.js';
 
 // mount the page - this needs to be the last line in the file
 app.mount("main");
