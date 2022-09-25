@@ -26,8 +26,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Description</th>
+                            <th style="text-align: left;">Name</th>
+                            <th style="text-align: left;">Description</th>
                             <th>Price</th>
                             <th>Available</th>
                             <th></th>
@@ -37,13 +37,13 @@
                         <tr v-for="product in products" style="height: 100px;">
                             <td>{{product.name}}</td>
                             <td>{{product.description}}</td>
-                            <td>{{formatCurrency(product.listPrice)}}</td>
-                            <td>{{formatNumber(product.quantityInStock)}}</td>
+                            <td style="text-align: center;">{{formatCurrency(product.listPrice)}}</td>
+                            <td style="text-align: center;">{{formatNumber(product.quantityInStock)}}</td>
                             <td><button @click.prevent="buyProduct(product)">Buy</button></td>
                         </tr>
                 </table>
             </div>
         </main>
-        <script type="module" src="js/view-products.js"></script>
     </body>
+    <script type="module" src="js/view-products.js"></script>
 </html>

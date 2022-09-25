@@ -36,7 +36,7 @@ public interface ProductJdbiDAO extends ProductDAO {
     public void removeProduct(@BindBean Product aProduct);
     
     @Override
-    @SqlUpdate("MERGE INTO PRODUCT(productID, name, description, category, listPrice, quantityInStock) values (:productId, :name, :description, :category, :listPrice, :quantityInStock)")
+    @SqlUpdate("MERGE INTO PRODUCT(productID, name, description, category, listPrice, quantityInStock, filePath) values (:productId, :name, :description, :category, :listPrice, :quantityInStock, :filePath)")
     public void saveProduct(@BindBean Product aProduct);
     
     @Override

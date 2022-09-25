@@ -4,7 +4,7 @@
  */
 package web;
 
-import domain.Customer;
+import dao.SaleDAO;
 import domain.Sale;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;

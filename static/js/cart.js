@@ -49,7 +49,7 @@ const app = Vue.createApp({
         },
         increment() {
             if (this.quantity < this.product.quantityInStock)
-            this.quantity++;
+                this.quantity++;
         },
         decrement() {
             if (this.quantity !== 1) {
@@ -66,7 +66,7 @@ const app = Vue.createApp({
                 return true;
             }
         },
-        isEmpty: function(evt) {
+        isEmpty: function (evt) {
             if (evt.target.value === '' || evt.target.value === '0') {
                 this.quantity = 1;
             }
@@ -76,10 +76,11 @@ const app = Vue.createApp({
         },
         checkOut() {
             let sale = new Sale(this.customer, this.items);
+            console.log();
             axios.post(salesApi, sale)
                     .then(() => {
                         dataStore.commit("clearItems");
-                        window.location = 'check-out.html';
+                        window.location = 'order-confirmation.html';
                     })
                     .catch(error => {
                         alert(error.response.data.message);
@@ -92,9 +93,15 @@ const app = Vue.createApp({
         },
         getTotal() {
             return total;
+        },
+        getImgUrl() {
+            return this.product.filePath;
+        },
+        getItemUrl(item) {
+            return item.product.filePath;
         }
     },
-    
+
     // other modules
     mixins: [NumberFormatter]
 });

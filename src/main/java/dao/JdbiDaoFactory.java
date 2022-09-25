@@ -45,4 +45,11 @@ public class JdbiDaoFactory {
 		}
 		return JDBI.onDemand(CustomerJdbiDAO.class);
 	}
+        
+        public static SaleDAO getSaleDAO() {
+		if(HIKARI_DATA_SOURCE == null) {
+			initialisePool();
+		}
+		return JDBI.onDemand(SaleJdbiDAO.class);
+	}
 }

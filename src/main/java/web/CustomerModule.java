@@ -4,7 +4,7 @@
  */
 package web;
 
-import dao.CustomerCollectionsDAO;
+import dao.CustomerDAO;
 import domain.Customer;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
@@ -15,7 +15,7 @@ import io.jooby.StatusCode;
  */
 public class CustomerModule extends Jooby {
 
-    public CustomerModule(CustomerCollectionsDAO dao) {
+    public CustomerModule(CustomerDAO dao) {
         post("/api/register/", ctx -> {
             Customer customer = ctx.body().to(Customer.class);
             dao.save(customer);

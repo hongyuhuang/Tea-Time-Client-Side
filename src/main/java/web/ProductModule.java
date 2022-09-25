@@ -4,7 +4,7 @@
  */
 package web;
 
-import dao.ProductCollectionsDAO;
+import dao.ProductDAO;
 import domain.Product;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
@@ -16,7 +16,7 @@ import java.util.Collection;
  */
 public class ProductModule extends Jooby {
 
-    public ProductModule(ProductCollectionsDAO dao) {
+    public ProductModule(ProductDAO dao) {
         get("/api/products/", ctx -> dao.getProducts());
 
         get("/api/products/{id}", ctx -> {

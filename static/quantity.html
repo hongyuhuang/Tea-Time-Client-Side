@@ -15,7 +15,7 @@
             <h1>{{product.name}}</h1>
             <div class="content">
                 <div class="image">
-                    <img src="images/placeholder.jpeg" alt="Placeholder Image"/>
+                    <img :src="getImgUrl()" alt="Placeholder Image"/>
                 </div> 
                 
                 <div class="text">
@@ -40,6 +40,6 @@
                 </div>
             </div>    
         </main>
-        <script type="module" src="js/cart.js"></script> 
     </body>
+    <script type="module" src="js/cart.js"></script> 
 </html>
