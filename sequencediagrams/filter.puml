@@ -42,23 +42,6 @@ end box
 
 database "Database" as db
 
-user -> page++ : views page
-page -> controller++ : <<mounted>>
-controller -> controller++ : getCategories() 
-controller -> axios++ : get("/api/categories/")
-axios -> service++ : HTTP GET /api/categories/
-service -> module++ : get("/api/categories/")
-module -> dao++ : getCategories() 
-dao -> db++ : select category * product
-return result 
-return categories
-return categories
-return JSON encoded categories
-return JavaScript categories
-controller--
-return template merged with categories
-return categories displayed to user
-
 user -> page++ : clicks one of the categories
 page -> controller++ : send the category to the controller 
 controller -> axios++ : get("/api/categories/${category}")
@@ -69,6 +52,7 @@ module -> dao++ : filterByCategory(category)
 dao -> db++ : select * from product\nwhere category = :category
 return result
 return products
+module--
 return products
 return JSON encoded products
 return JavaScript products

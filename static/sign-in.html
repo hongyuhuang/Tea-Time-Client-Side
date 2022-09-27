@@ -25,8 +25,8 @@
                     <legend>Sign In</legend>
 
                     <form @submit.prevent="signIn()">
-                        <label>Username:</label><input type="text" v-model="customer.username"/>
-                        <label>Password:</label><input type="password" v-model="customer.password"/>
+                        <label>Username:</label><input type="text" v-model="customer.username" required/>
+                        <label>Password:</label><input type="password" v-model="customer.password" required/>
 
                         <button type="submit">Sign In</button>
                     </form>

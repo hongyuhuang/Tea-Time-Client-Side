@@ -26,11 +26,11 @@
                     <form @submit.prevent="createAccount()"/>
 
                     <label>Username:</label><input name="username" type="text" v-model="customer.username" required/>
-                    <label>First Name</label><input name="firstName" type="text" v-model="customer.firstName"/>
-                    <label>Last Name</label><input name="lastName" type="text" v-model="customer.surname">
-                    <label>Email:</label><input name="email" type="email" v-model="customer.emailAddress"/>
+                    <label>First Name</label><input name="firstName" type="text" v-model="customer.firstName" required/>
+                    <label>Last Name</label><input name="lastName" type="text" v-model="customer.surname" required>
+                    <label>Email:</label><input name="email" type="email" v-model="customer.emailAddress" required/>
                     <label>Address:</label><textarea name="address" v-model="customer.shippingAddress"></textarea>
-                    <label>Password:</label><input name="password" type="password" v-model="customer.password"/>
+                    <label>Password:</label><input name="password" type="password" v-model="customer.password" required/>
 
                     <button type="submit">Create Account</button>
                     </form>
