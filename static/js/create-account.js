@@ -1,11 +1,11 @@
-var customersApi = "/api/register/";
+var customersApi = "/api/register";
 
 const app = Vue.createApp({
 
     data() {
         return {
             // models map (comma separated key/value pairs)
-            customers : new Array()
+            customer : new Object()
         };
     },
 
@@ -17,9 +17,9 @@ const app = Vue.createApp({
     methods: {
         // comma separated function declarations
            createAccount() {
-            const customer = {id: this.id, username: this.username, firstName: this.firstName, surname: this.surname, emailAddress: this.emailAddress, shippingAddress: this.shippingAddress,password: this.password};
+            //const customer = {id: this.id, username: this.username, firstName: this.firstName, surname: this.surname, emailAddress: this.emailAddress, shippingAddress: this.shippingAddress,password: this.password};
 
-            axios.post(customersApi, customer)
+            axios.post(customersApi, this.customer)
                     .then(() => {
                         window.location = 'sign-in.html';
                     })

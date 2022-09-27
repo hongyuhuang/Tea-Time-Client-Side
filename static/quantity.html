@@ -17,29 +17,29 @@
                 <div class="image">
                     <img :src="getImgUrl()" alt="Placeholder Image"/>
                 </div> 
-                
+
                 <div class="text">
                     <h3>Category</h3>
-                        <p>{{product.category}}</p>
+                    <p>{{product.category}}</p>
                     <h3>Description</h2>
                         <p>{{product.description}}</p>
-                    <p><b>Price</b> ${{product.listPrice}}</p>
-                    <p><b>Available</b> {{product.quantityInStock}}</p>
-                    
-                    <div class="button-label">
-                        <h3>Quantity</h3>
-                    </div>
-                    
-                    <div class="plus-minus">
-                        <button id="minus" @click.prevent="decrement()" >−</button>
-                        <input type="number" id="input" v-model.number="quantity" @keypress="isNumber($event)" @change="isEmpty($event)"/>
-                        <button id="plus" @click.prevent="increment()">+</button>
-                    </div>
-                    
-                    <button class="add-to-cart" @click.prevent="addProductToCart()">Add to cart</button>
+                        <p><b>Price</b> ${{product.listPrice}}</p>
+                        <p><b>Available</b> {{product.quantityInStock}}</p>
+
+                        <div class="button-label">
+                            <h3>Quantity</h3>
+                        </div>
+
+                        <div class="plus-minus">
+                            <button id="minus" @click.prevent="decrement()" >−</button>
+                            <input type="number" id="input" v-model.number="quantity" min="1" @keypress="isNumber($event)" @change="isEmpty($event)"/>
+                            <button id="plus" @click.prevent="increment()">+</button>
+                        </div>
+
+                        <button class="add-to-cart" @click.prevent="addProductToCart()">Add to cart</button>
                 </div>
             </div>    
         </main>
+        <script type="module" src="js/cart.js"></script> 
     </body>
-    <script type="module" src="js/cart.js"></script> 
 </html>

@@ -37,6 +37,7 @@ public class StaticAssetModule extends Jooby {
         assets("/js/number-formatter.js", Paths.get("static/js/number-formatter.js"));
         assets("/js/sign-in.js", Paths.get("static/js/sign-in.js"));
         assets("/js/view-products.js", Paths.get("static/js/view-products.js"));
+        assets("/js/authentication.js", Paths.get("static/js/authentication.js"));
 
         // ... and the rest of the JavaScript files
         // external JavaScript files

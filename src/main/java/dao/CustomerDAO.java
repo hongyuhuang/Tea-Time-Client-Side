@@ -5,13 +5,12 @@
 package dao;
 
 import domain.Customer;
-import java.util.Collection;
 
 /**
  *
  * @author hongyuhuang
  */
-public interface CustomerDAO {
+public interface CustomerDAO extends CredentialsValidator{
 
     /**
      * Adds a customer to the DAO.
@@ -27,7 +26,8 @@ public interface CustomerDAO {
      * @param password The password of the customer we are checking against.
      * @return If the customer with the matching username and password exist in the DAO.
      */
-    boolean match(String username, String password);
+    @Override
+    Boolean match(String username, String password);
 
     /**
      * Returns the customer matching the given username.
@@ -40,7 +40,7 @@ public interface CustomerDAO {
     /**
      * Deletes a customer from the DAO.
      *
-     * @param aStudent The customer to delete.
+     * @param aCustomer
      */
     void delete(Customer aCustomer);
 }

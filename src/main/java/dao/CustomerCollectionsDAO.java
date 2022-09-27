@@ -23,7 +23,7 @@ public class CustomerCollectionsDAO implements CustomerDAO{
     }
     
     @Override
-    public boolean match(String username, String password){
+    public Boolean match(String username, String password){
         if(customers.containsKey(username)){
             return getByUsername(username).getPassword().equals(password);
         }

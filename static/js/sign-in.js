@@ -19,7 +19,8 @@ const app = Vue.createApp({
     methods: {
         // comma separated function declarations
         signIn(){
-            axios.get(customer({'username': this.username}))
+            this.createToken(this.customer.username, this.customer.password);
+            axios.get(customer({'username': this.customer.username}))
                     .then(response => {
                         this.customer = response.data;
                         dataStore.commit("signIn", this.customer);
@@ -32,7 +33,7 @@ const app = Vue.createApp({
     },
 
     // other modules
-    mixins: []
+    mixins: [BasicAccessAuthentication]
 
 });
 
@@ -46,6 +47,9 @@ app.component('navmenu', navigationMenu);
 // import data store
 import { dataStore } from './data-store.js';
 app.use(dataStore);
+
+// import authentication module
+import { BasicAccessAuthentication } from './authentication.js';
 
 // mount the page - this needs to be the last line in the file
 app.mount("main");

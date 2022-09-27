@@ -23,7 +23,7 @@ public interface CustomerJdbiDAO extends CustomerDAO {
 
     @Override
     @SqlQuery("select exists (select * from CUSTOMER where username = :username and password = :password)")
-    public boolean match(@Bind("username") String username, @Bind("password") String password);
+    public Boolean match(@Bind("username") String username, @Bind("password") String password);
     
     @Override
     @SqlQuery("SELECT * FROM CUSTOMER WHERE username = :username")

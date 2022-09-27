@@ -16,7 +16,7 @@ import io.jooby.StatusCode;
 public class CustomerModule extends Jooby {
 
     public CustomerModule(CustomerDAO dao) {
-        post("/api/register/", ctx -> {
+        post("/api/register", ctx -> {
             Customer customer = ctx.body().to(Customer.class);
             dao.save(customer);
             return ctx.send(StatusCode.CREATED);

@@ -17,7 +17,7 @@ import java.util.Collection;
 public class ProductModule extends Jooby {
 
     public ProductModule(ProductDAO dao) {
-        get("/api/products/", ctx -> dao.getProducts());
+        get("/api/products", ctx -> dao.getProducts());
 
         get("/api/products/{id}", ctx -> {
             String productID = ctx.path("id").value();
@@ -31,7 +31,7 @@ public class ProductModule extends Jooby {
             }
         });
 
-        get("/api/categories/", ctx -> dao.getCategories());
+        get("/api/categories", ctx -> dao.getCategories());
 
         get("/api/categories/{category}", ctx -> {
             String category = ctx.path("category").value();

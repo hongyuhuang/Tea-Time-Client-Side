@@ -1,5 +1,5 @@
-var productsApi = '/api/products/';
-var categoriesApi = '/api/categories/';
+var productsApi = '/api/products';
+var categoriesApi = '/api/categories';
 var categoriesFilterApi = ({category}) => `/api/categories/${category}`;
 
 
@@ -62,7 +62,8 @@ const app = Vue.createApp({
     },
 
     // other modules
-    mixins: [NumberFormatter]
+    mixins: [NumberFormatter, BasicAccessAuthentication]
+
 
 });
 
@@ -79,6 +80,9 @@ app.use(dataStore);
 
 //import number formatter
 import { NumberFormatter } from './number-formatter.js';
+
+// import authentication module
+import { BasicAccessAuthentication } from './authentication.js';
 
 // mount the page - this needs to be the last line in the file
 app.mount("main");
