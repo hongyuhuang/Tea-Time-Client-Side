@@ -5,7 +5,8 @@ const app = Vue.createApp({
     data() {
         return {
             // models map (comma separated key/value pairs)
-            customer: new Object()
+            customer: new Object(),
+            signedInMsg: "Please sign into continue."
         };
     },
 
@@ -27,7 +28,7 @@ const app = Vue.createApp({
                         window.location = 'index.html';
                     })
                     .catch(error => {
-                        alert(error.response.data.message);
+                        this.signedInMsg =  "Please enter correct details.";
                     });
         }
     },
