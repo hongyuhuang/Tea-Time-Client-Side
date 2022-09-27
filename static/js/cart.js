@@ -67,7 +67,7 @@ const app = Vue.createApp({
             }
         },
         isEmpty: function (evt) {
-            if (evt.target.value === '' || evt.target.value === '0') {
+            if (evt.target.value === '' || evt.target.value.charAt(0) === '0') {
                 this.quantity = 1;
             }
             if (evt.target.value > this.product.quantityInStock) {

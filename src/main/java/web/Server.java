@@ -9,7 +9,9 @@ import dao.SaleDAO;
 import dao.SaleJdbiDAO;
 import io.jooby.Jooby;
 import io.jooby.ServerOptions;
+import io.jooby.StatusCode;
 import io.jooby.json.GsonModule;
+import java.nio.file.Paths;
 
 public class Server extends Jooby {
 
@@ -18,7 +20,7 @@ public class Server extends Jooby {
     SaleDAO saleDAO = JdbiDaoFactory.getSaleDAO();
 
     public Server() {
-        setServerOptions(new ServerOptions().setPort(8085));
+        //setServerOptions(new ServerOptions().setPort(8085));
 
         install(new GsonModule());
 
@@ -26,6 +28,11 @@ public class Server extends Jooby {
         mount(new ProductModule((ProductJdbiDAO) productDAO));
         mount(new CustomerModule((CustomerJdbiDAO) customerDAO));
         mount(new SaleModule((SaleJdbiDAO) saleDAO));
+
+        error(StatusCode.SERVER_ERROR, (ctx, cause, code) -> {
+            ctx.getRouter().getLog().error(cause.getMessage(), cause);
+            ctx.send(Paths.get("static/500.html"));
+        });
     }
 
     public static void main(String[] args) {

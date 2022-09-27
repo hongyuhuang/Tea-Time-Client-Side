@@ -25,6 +25,9 @@ public class CustomerModule extends Jooby {
         get("/api/customers/{username}", ctx -> {
             String username = ctx.path("username").value();
             Customer customer = dao.getByUsername(username);
+            customer.setPassword(null);
+            customer.setShippingAddress(null);
+            customer.setEmailAddress(null);
             if (customer == null) {
                 // no customer with that username found, so return a 404/Not Found error
                 return ctx.send(StatusCode.NOT_FOUND);

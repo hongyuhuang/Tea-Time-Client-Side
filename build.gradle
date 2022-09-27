@@ -4,8 +4,8 @@ plugins {
 }
 
 application {
-        //def applicationMainClass = "web.Server";
-        def applicationMainClass = "web.ProductCatalogue";
+        def applicationMainClass = "web.Server";
+        //def applicationMainClass = "web.ProductCatalogue";
 	mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : applicationMainClass;
 }
 
