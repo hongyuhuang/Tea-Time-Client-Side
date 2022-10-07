@@ -1,6 +1,6 @@
-# Tea-Time-Improved
+# Tea Time
 
-The objective of the project was to create a client-side rendered web based online shopping application that allows registered customers to purchase products.
+The objective of the project was to create a client-side rendered web based online shopping application that allows registered customers to purchase products. This web application is an iteration of the https://github.com/hongyuhuang/Tea-Time-Server-Side.
 
 The website is a multi page application and the user must create an account and sign in in order for them to view products and add them to the cart. The page uses Vue.js to load only part of the navigation menu depending if there is a customer in the session store or not. The back end is mostly done through Jooby which is a mini framework in Java. There is also basic HTTP authentication built into the applicaiton and some client side validation.
 
