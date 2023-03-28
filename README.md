@@ -4,7 +4,7 @@ The objective of the project was to create a client-side rendered web based onli
 
 The website is a multi page application and the user must create an account and sign in in order for them to view products and add them to the cart. The page uses Vue.js to load only part of the navigation menu depending if there is a customer in the session store or not. The back end is mostly done through Jooby which is a mini framework in Java. There is also basic HTTP authentication built into the applicaiton and some client side validation.
 
-The web application can be run by building the project in Netbeans and then running the project visiting the local hosts that are prompted in the output.
+The web application can be run by running `Server.java`.
 
 <img width="1440" alt="Screen Shot 2022-09-28 at 8 35 39 PM" src="https://user-images.githubusercontent.com/31984374/192717433-ca9e11f7-fa73-45be-b096-05c3ce178338.png">
 
